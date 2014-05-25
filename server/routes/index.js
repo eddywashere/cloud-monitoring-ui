@@ -3,6 +3,15 @@ var router = express.Router();
 var passport = require('passport');
 var Authentication = require('../authentication');
 
+
+router.get('/', Authentication.ensureUnauthenticated, function(req, res){
+  res.render('index', { title: 'Dashboard - Login' });
+});
+
+router.get('/styleguide', function(req, res){
+  res.render('styleguide', { user: req.user, title: 'Dashboard - Login' });
+});
+
 router.get('/dashboard', Authentication.ensureAuthenticated, function(req, res){
   res.render('dashboard', { user: req.user, title: 'Dashboard' });
 });
@@ -48,15 +57,5 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
-
-// Simple route middleware to ensure user is authenticated.
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}
 
 module.exports = router;

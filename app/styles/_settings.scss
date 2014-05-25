@@ -1,0 +1,46 @@
+$font-family-serif: "Roboto Slab", Georgia, "Times New Roman", Times, serif !default;
+
+$screen-small: "only screen and (max-width: 640px)";
+$screen-medium: "only screen and (max-width: 1024px)";
+$screen-large: "only screen and (max-width: 1140px)";
+$screen-retina: "only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)";
+
+//@media #{$screen-size} {
+//  background: red;
+//}
+//
+
+@mixin theme-bg($bg, $heading, $text) {
+  background: $bg;
+  color: $text;
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: $heading;
+  }
+  hr {
+    clear: both;
+    display: block;
+    height: 0px;
+    border-top: 1px solid rgba(darken($bg, 5%), .8);
+    border-bottom: 1px solid rgba(lighten($bg, 5%), .8);
+  }
+}
+
+@mixin clearfix() {
+  clear: both;
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    zoom: 1;
+    *display: inline;
+  }
+
+  &:after { clear: both; }
+}
+
+@mixin negative-margins() {
+  margin: 0 0 - $grid-padding;
+  padding: 0 $grid-padding;
+}

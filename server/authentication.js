@@ -51,6 +51,14 @@ module.exports = {
     }
   },
 
+  ensureUnauthenticated: function(req, res, next) {
+    if (req.isUnauthenticated()) {
+      return next();
+    } else {
+      return res.redirect('/dashboard');
+    }
+  },
+
   csrf: function(req) {
     var token = (req.body && req.body._csrf)
     || (req.query && req.query._csrf)

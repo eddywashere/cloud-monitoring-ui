@@ -46,7 +46,7 @@ module.exports = function (grunt) {
         }
       },
       html: {
-        files: ['<%= yeoman.app %>/**/*.html'],
+        files: ['<%= yeoman.app %>/**/*.html', '<%= yeoman.app %>/**/*.ejs'],
         options: {
           livereload: true
         }
@@ -68,6 +68,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,*/}*.ejs',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -156,13 +157,14 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     bowerInstall: {
       app: {
-        src: ['<%= yeoman.app %>/index.html'],
+        src: ['<%= yeoman.app %>/index.ejs'],
         ignorePath: '<%= yeoman.app %>/'
+      },
+      sass: {
+        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        ignorePath: '<%= yeoman.app %>/bower_components/'
       }
     },
-
-
-
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -188,9 +190,7 @@ module.exports = function (grunt) {
         }
       },
       server: {
-        options: {
-          debugInfo: true
-        }
+
       }
     },
 
@@ -212,7 +212,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: '<%= yeoman.app %>/index.ejs',
       options: {
         dest: '<%= yeoman.dist %>'
       }
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      html: ['<%= yeoman.dist %>/{,*/}*.html', '<%= yeoman.dist %>/{,*/}*.ejs'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>']
@@ -253,13 +253,12 @@ module.exports = function (grunt) {
         options: {
           collapseWhitespace: true,
           collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
+          removeCommentsFromCDATA: true
         },
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.ejs', 'views/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -281,7 +280,7 @@ module.exports = function (grunt) {
     // Replace Google CDN references
     cdnify: {
       dist: {
-        html: ['<%= yeoman.dist %>/*.html']
+        html: ['<%= yeoman.dist %>/*.ejs']
       }
     },
 
@@ -296,7 +295,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            '*.html',
+            '*.ejs',
             'views/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
@@ -354,7 +353,7 @@ module.exports = function (grunt) {
       },
       dist: {
         /** @required  - string (or array of) including grunt glob variables */
-        src: ['<%= yeoman.dist %>/*.html']
+        src: ['<%= yeoman.dist %>/*.ejs']
       }
     },
 
@@ -366,7 +365,7 @@ module.exports = function (grunt) {
         region: 'DFW',
         upload: [{
           container: '<%= yeoman.cdnContainer %>',
-          src: ['dist/**/*', '!dist/**/*.html'],
+          src: ['dist/**/*', '!dist/**/*.html', '!dist/*.ejs'],
           dest: '<%= yeoman.pkg.version %>/',
           stripcomponents: 1
         }]
@@ -377,7 +376,7 @@ module.exports = function (grunt) {
         region: 'DFW',
         upload: [{
           container: '<%= yeoman.cdnContainer %>',
-          src: ['dist/**/*.html', '!dist/*.html'],
+          src: ['dist/**/*.html'],
           dest: '<%= yeoman.pkg.version %>/', // TODO - make this a variable
           stripcomponents: 1,
           headers: {

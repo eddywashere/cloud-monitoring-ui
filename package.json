@@ -13,12 +13,13 @@
     "ejs-locals": "*",
     "express": "*",
     "express-session": "*",
+    "mongoose": "^3.8.10",
     "morgan": "*",
     "passport": "*",
     "passport-keystone": "*",
     "proxy-keystone": "*",
     "static-favicon": "*"
-    },
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "~0.4.0",

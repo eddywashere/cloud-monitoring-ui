@@ -1,0 +1,67 @@
+body {
+  background: #f1f1f1;
+  padding-top: 55px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: $font-family-serif;
+}
+
+.btn, a {
+  &:active, &:focus, &:active:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.col-center {
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  position: relative;
+  padding-left: 67px;
+}
+
+.navbar-brand img {
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  width: 42px;
+}
+
+// .navbar-nav li {
+//   span, a {
+//     -webkit-font-smoothing: antialiased;
+//   }
+// }
+
+// colors
+
+.bg-gray {
+  @include theme-bg(#333, #fff, #fff);
+}
+
+.bg-purple {
+  @include theme-bg(#9966ee, #fff, #fff)
+}
+
+hr.seam {
+  clear: both;
+  display: block;
+  height: 0px;
+  border-top: 1px solid rgba(darken(#eee, 8%), .8);
+  border-bottom: 1px solid rgba(lighten(#eee, 5%), .8);
+}

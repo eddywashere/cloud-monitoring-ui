@@ -1,0 +1,180 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= title %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="dashboardApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img src="https://a16545fb495c8760fb33-4cec33efbe2744e99ba863e52edb2075.ssl.cf2.rackcdn.com/fanatiguy.png">Rackspace
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form" action="/login" method="post">
+            <div class="form-group">
+              <input type="text" placeholder="Username" name="username" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" name="password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-danger">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="jumbotron bg-purple">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-sm-12 col-md-10 col-center">
+            <h1>Monitor anything, anywhere!</h1>
+            <p>With Rackspace Cloud Monitoring, you can monitor your websites—whether they're hosted on the Rackspace public cloud, Rackspace dedicated servers, servers in your data centers, or even servers in other providers' data centers.</p>
+            <p><a class="btn btn-default btn-outline btn-lg" role="button">Learn more »</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron" style="background: #fff;">
+      <div class="container text-center">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-center">
+          <h2>Get centralized monitoring for all of your servers</h2>
+
+          <div class="row">
+            <div class="col-md-4" style="margin-top:60px;" >
+              <img class="img-circle" data-src="holder.js/140x140" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" style="width: 140px; height: 140px;">
+              <h3>Customize</h3>
+              <p>Using our API or Cloud Control Panel, you can set up alerts to notify you when a service is down. Then, use our Cloud Control Panel (or mobile app) to fix the problem before your customers ever see it.</p>
+<!--               <p><a class="btn btn-danger" href="#" role="button">View details »</a></p>
+ -->            </div><!-- /.col-md-4 -->
+            <div class="col-md-4" style="margin-top:60px;">
+              <img class="img-circle" data-src="holder.js/140x140" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" style="width: 140px; height: 140px;">
+              <h3>Scale automatically</h3>
+              <p>Cloud Monitoring automatically scales to match the size of your infrastructure. Even if you add thousands of Cloud Servers™ in minutes, our Cloud Monitoring service can instantly report on all of them.</p>
+<!--               <p><a class="btn btn-danger" href="#" role="button">View details »</a></p>
+ -->            </div><!-- /.col-md-4 -->
+            <div class="col-md-4" style="margin-top:60px;">
+              <img class="img-circle" data-src="holder.js/140x140" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" style="width: 140px; height: 140px;">
+              <h3>Control alerts</h3>
+              <p>Monitor services from multiple locations. You control when you're alerted—get notified at the first sign of a problem, or only when various locations all agree that a service is down.</p>
+<!--               <p><a class="btn btn-danger" href="#" role="button">View details »</a></p>
+ -->            </div><!-- /.col-md-4 -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Add your site or application content here -->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-10 col-center">
+            <h2 class="text-center">Built for developers</h2>
+            <p class="text-center">Powerful APIs — Complete Technology Stack — Open Technologies</p>
+            <div class="row" style="margin-top:60px;">
+              <div class="col-sm-12 col-md-6 text-center">
+                <p>
+                  <img style="max-width:80%;" src="http://images.cdn.rackspace.com/cloud/public/monitoring/monitor-anywhere.png" alt="">
+                </p>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <h3 class="uppercase">Monitoring... uninterrupted</h3>
+                <p>We have five monitoring zones, located in Dulles, Dallas, Chicago, London, and Hong Kong. The zones support each other, acting as safety nets if a data center ever has trouble. They also fill in for each other when another data center needs maintenance or an upgrade. It's all designed to keep your monitoring running without downtime.</p>
+              </div>
+            </div>
+            <div class="row" style="margin-top:60px;">
+              <div class="col-sm-12 col-md-6 col-md-push-6 text-center">
+                <p>
+                  <img style="max-width:80%;" src="http://images.cdn.rackspace.com/cloud/public/monitoring/monitor-anywhere.png" alt="">
+                </p>
+              </div>
+              <div class="col-sm-12 col-md-6 col-md-pull-6">
+                <h3 class="uppercase">Monitoring... uninterrupted</h3>
+                <p>We have five monitoring zones, located in Dulles, Dallas, Chicago, London, and Hong Kong. The zones support each other, acting as safety nets if a data center ever has trouble. They also fill in for each other when another data center needs maintenance or an upgrade. It's all designed to keep your monitoring running without downtime.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron bg-gray">
+
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/server.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

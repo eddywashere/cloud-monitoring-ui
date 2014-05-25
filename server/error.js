@@ -4,7 +4,7 @@ module.exports = {
 
   // development error handler
   // will print stacktrace
-  development: function(err, req, res) {
+  development: function(err, req, res, next) {
     var customError = {
       message: err.message,
       error: err
@@ -12,7 +12,7 @@ module.exports = {
     res.status(err.status || 500);
     res.format({
       json: function(){
-        res.send(customError);
+        res.json(customError);
       },
       html: function(){
         res.render('error', customError);
@@ -22,14 +22,14 @@ module.exports = {
 
   // production error handler
   // no stacktraces leaked to user
-  production: function(err, req, res) {
+  production: function(err, req, res, next) {
     var customError = {
       message: err.message
     };
     res.status(err.status || 500);
     res.format({
       json: function(){
-        res.send(customError);
+        res.json(customError);
       },
       html: function(){
         res.render('error', customError);

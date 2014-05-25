@@ -17,6 +17,7 @@ var cors = require('cors');
 var corsOptions = {
   origin: '*'
 };
+var staticDir;
 // A proxy for Keystone Service Catalog Endpoints
 var proxyKeystone = require('proxy-keystone');
 // routes
@@ -47,19 +48,17 @@ app.use(passport.session());
 app.use(flash());
 app.use(cors(corsOptions));
 
-app.get('/', function(req, res){
-  res.render('index', { user: req.user, title: 'Dashboard' });
-});
-
 if (app.get('env') === 'production') {
-  app.set('views', __dirname + '/../dist');
-  app.use(express.static(__dirname + '/../dist'));
+  staticDir = __dirname + '/../dist';
 } else {
-  app.set('views', __dirname + '/../app');
-  app.use(express.static(__dirname + '/../app'));
+  staticDir = __dirname + '/../app';
   app.use('/styles', express.static(__dirname + '/../.tmp/styles'));
 }
-app.set('view engine', 'html');
+
+app.use(express.static(staticDir));
+
+app.set('views', staticDir);
+app.set('view engine', 'ejs');
 app.engine('html', require('ejs-locals'));
 
 passport.use(Authentication.keystoneStrategy);

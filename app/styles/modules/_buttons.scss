@@ -1,0 +1,74 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant($color, $background, $border) {
+  &, &:focus {
+    color: $color;
+    background-color: $background;
+    border-color: if(lightness($background) < 93%, $border, #d8d8d8);
+    outline: none;
+  }
+
+  &:hover {
+    color: $color;
+    background-color: lighten(desaturate($background, 5%), 6%);
+        border-color: lighten(desaturate($border, 5%), 3%);
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken(desaturate($background, 5%), 3%);
+        border-color: darken(desaturate($border, 5%), 2%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+
+  &.btn-outline {
+    &, &:focus {
+      background-color: transparent;
+      border-color: if(lightness($background) < 93%, $border, #fff);
+      color: if(lightness($background) < 93%, $border, #fff);
+    }
+
+    &:hover,
+    // &:focus,
+    &:active,
+    &.active {
+      color: if(lightness($background) < 93%, $color, #999);
+      border-color: if(lightness($background) < 93%, $border, #fff);
+      background-color: if(lightness($background) < 93%, $background, #fff);
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
