@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="dashboardApp">
+  <body ng-app="loginApp" ng-controller="LoginRootCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -58,7 +58,7 @@
           <div class="col-sm-12 col-md-10 col-center">
             <h1>Monitor anything, anywhere!</h1>
             <p>With Rackspace Cloud Monitoring, you can monitor your websites—whether they're hosted on the Rackspace public cloud, Rackspace dedicated servers, servers in your data centers, or even servers in other providers' data centers.</p>
-            <p><a class="btn btn-default btn-outline btn-lg" role="button">Learn more »</a></p>
+            <p><a class="btn btn-default btn-outline btn-lg" role="button" ng-click="clickMe()">Learn more »</a></p>
           </div>
         </div>
       </div>
@@ -171,10 +171,9 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/services/server.js"></script>
+    <!-- build:js({.tmp,app}) scripts/login.js -->
+    <script src="scripts/login.js"></script>
+    <script src="scripts/controllers/login-root.js"></script>
     <!-- endbuild -->
 </body>
 </html>
