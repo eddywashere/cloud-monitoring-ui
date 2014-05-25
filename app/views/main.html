@@ -1,21 +1,18 @@
-<div class="container">
-  <h4>API Endpoints</h4>
+<h4>API Endpoints</h4>
+<ul>
+  <li ng-repeat="(i, service) in user.serviceCatalog">
+    {{service.name}} -
+    <span ng-repeat="(i, endpoint) in service.endpoints">
+      <a ng-if="!endpoint.region" href="/proxy/{{service.name}}/{{getListCall(service.name)}}">Default</a>
+      <a ng-if="endpoint.region" href="/proxy/{{service.name}},{{endpoint.region}}/{{getListCall(service.name)}}">{{endpoint.region | uppercase}}</a>{{{true: '', false: ', '}[$last]}}
+    </span>
+  </li>
+</ul>
+<h4>Servers</h4>
+<p ng-show="servers.length > 0">
   <ul>
-    <li ng-repeat="(i, service) in user.serviceCatalog">
-      {{service.name}} -
-      <span ng-repeat="(i, endpoint) in service.endpoints">
-        <a ng-if="!endpoint.region" href="/proxy/{{service.name}}/{{getListCall(service.name)}}">Default</a>
-        <a ng-if="endpoint.region" href="/proxy/{{service.name}},{{endpoint.region}}/{{getListCall(service.name)}}">{{endpoint.region | uppercase}}</a>{{{true: '', false: ', '}[$last]}}
-      </span>
+    <li ng-repeat="server in servers">
+      <a href="/proxy/cloudServersOpenStack,ORD/servers/{{server.id}}" title="{{server.status}}">{{server.name}}</a> - {{server.accessIPv4}}
     </li>
   </ul>
-  <h4>Servers</h4>
-  <p ng-show="servers.length > 0">
-    <ul>
-      <li ng-repeat="server in servers">
-        <a href="/proxy/cloudServersOpenStack,ORD/servers/{{server.id}}" title="{{server.status}}">{{server.name}}</a> - {{server.accessIPv4}}
-      </li>
-    </ul>
-  </p>
-
-</div>
+</p>
