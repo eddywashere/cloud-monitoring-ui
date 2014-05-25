@@ -1,0 +1,26 @@
+<h2>{{entity.label}}</h2>
+<hr>
+<h3>Details</h3>
+<ul>
+  <li>id: {{entity.id}}</li>
+  <li>label: {{entity.label}}</li>
+  <li>ip_addresses:
+    <ul>
+      <li ng-repeat="(address, ip) in entity.ip_addresses">
+        {{address}} - {{ip}}
+      </li>
+    </ul>
+  </li>
+  <li>metadata: <span ng-if="!entity.metadata">null</span>
+    <ul ng-if="entity.metadata">
+      <li ng-repeat="(key, value) in entity.metadata">
+        {{key}} - {{value}}
+      </li>
+    </ul>
+  </li>
+  <li>managed: {{entity.managed}}</li>
+  <li>uri: {{entity.uri}}</li>
+  <li>agent_id: {{entity.agent_id}}</li>
+  <li>created_at: {{entity.agent_id}}</li>
+  <li>updated_at: {{entity.agent_id}}</li>
+</ul>

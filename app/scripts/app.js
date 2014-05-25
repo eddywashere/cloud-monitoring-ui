@@ -9,11 +9,19 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      // .when('/', {
+      //   templateUrl: 'views/main.html',
+      //   controller: 'MainCtrl'
+      // })
+      .when('/entities', {
+        templateUrl: 'views/entity.html',
+        controller: 'EntityCtrl'
+      })
+      .when('/entities/:entityid', {
+        templateUrl: 'views/entity-detail.html',
+        controller: 'EntityDetailCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/entities'
       });
   });
