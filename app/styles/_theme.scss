@@ -8,7 +8,7 @@ body.dashboard {
 }
 
 body {
-  background: #f1f1f1;
+  background: #fff;
   padding-top: 56px;
   -webkit-font-smoothing: antialiased;
 }
@@ -89,13 +89,6 @@ hr.seam {
   overflow: hidden;
 }
 
-@media screen and (max-width: 767px) {
-  .l-main {
-    left: 0;
-    padding-left: 0;
-  }
-}
-
 .l-sidebar {
   position: absolute;
   min-height: 100%;
@@ -114,6 +107,16 @@ hr.seam {
 
 .l-content {
   padding: 0 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .l-main {
+    left: 0;
+    padding-left: 0;
+  }
+  .l-content {
+    padding: 0;
+  }
 }
 
 .hide-sidebar {
@@ -164,7 +167,6 @@ hr.seam {
   margin: 14px 0;
 }
 
-.panel-content {
-  background-color: white;
-  padding: 20px;
+.table-responsive {
+  border: none;
 }
