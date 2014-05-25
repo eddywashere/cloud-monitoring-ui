@@ -8,10 +8,6 @@ router.get('/', Authentication.ensureUnauthenticated, function(req, res){
   res.render('index', { title: 'Dashboard - Login' });
 });
 
-router.get('/styleguide', function(req, res){
-  res.render('styleguide', { user: req.user, title: 'Dashboard - Login' });
-});
-
 router.get('/dashboard', Authentication.ensureAuthenticated, function(req, res){
   res.render('dashboard', { user: req.user, title: 'Dashboard' });
 });

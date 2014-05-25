@@ -1,18 +1,23 @@
-<h4>API Endpoints</h4>
-<ul>
-  <li ng-repeat="(i, service) in user.serviceCatalog">
-    {{service.name}} -
-    <span ng-repeat="(i, endpoint) in service.endpoints">
-      <a ng-if="!endpoint.region" href="/proxy/{{service.name}}/{{getListCall(service.name)}}">Default</a>
-      <a ng-if="endpoint.region" href="/proxy/{{service.name}},{{endpoint.region}}/{{getListCall(service.name)}}">{{endpoint.region | uppercase}}</a>{{{true: '', false: ', '}[$last]}}
-    </span>
-  </li>
-</ul>
-<h4>Servers</h4>
-<p ng-show="servers.length > 0">
-  <ul>
-    <li ng-repeat="server in servers">
-      <a href="/proxy/cloudServersOpenStack,ORD/servers/{{server.id}}" title="{{server.status}}">{{server.name}}</a> - {{server.accessIPv4}}
-    </li>
-  </ul>
-</p>
+<h2 class="page-title">Entities</h2>
+<div class="panel-content">
+  <button type="button" class="btn btn-primary">Add Entity</button>
+  <button type="button" class="btn btn-default">Remove</button>
+  <table class="table" style="margin-top:10px;" ng-show="servers.length > 0">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Entity Name</th>
+        <th>IPv4</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="server in servers">
+        <td><input type="checkbox"></td>
+        <td><a href="/proxy/cloudServersOpenStack,ORD/servers/{{server.id}}" title="{{server.status}}">{{server.name}}</a></td>
+        <td>{{server.accessIPv4}}</td>
+        <td>{{server.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

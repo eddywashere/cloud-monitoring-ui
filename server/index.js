@@ -22,6 +22,7 @@ var staticDir;
 var proxyKeystone = require('proxy-keystone');
 // routes
 var routes = require('./routes/index');
+var styleguide = require('./routes/styleguide');
 var corsOptions = {
   origin: 'https://b5d45c6f37adce61f143-6257090f8b77658659ee2c55c0d9059e.ssl.cf1.rackcdn.com'
 };
@@ -67,6 +68,10 @@ passport.deserializeUser(Authentication.deserializeUser);
 
 // setup routes
 app.use('/', routes);
+
+if (app.get('env') === 'development'){
+  app.use('/', styleguide);
+}
 
 app.all('/proxy/*',
   proxyKeystone({

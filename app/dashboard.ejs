@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="dashboardApp">
+  <body ng-app="dashboardApp" class="dashboard">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -40,7 +40,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><span class="navbar-text"><%= user.username %> - <%= user.token %></span></li>
+            <li><span class="navbar-text"><%= user.username %> (#<%= user.tenant %>)</span></li>
             <li><a href="logout"><span class="iconic iconic-size-sm iconic-account-login" title="Logout" aria-hidden="true"></span></a></li>
           </ul>
         </div><!--/.navbar-collapse -->
@@ -48,7 +48,30 @@
     </div>
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid" ng-view=""></div>
+    <div class="l-main">
+      <div class="l-sidebar">
+        <div style="color:white;" class="l-inner">
+          <ul class="sidebar-nav">
+            <li class="header">
+              <span class="iconic iconic-pulse" title="pulse" aria-hidden="true"></span>Monitoring
+            </li>
+            <li>
+              <a href="#" class="selected">Entities</a>
+            </li>
+            <li>
+              <a href="#">Alarms</a>
+            </li>
+            <li>
+              <a href="#">Notification</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="l-content">
+        <div class="container-fluid" ng-view=""></div>
+      </div>
+    </div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
