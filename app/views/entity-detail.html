@@ -24,3 +24,16 @@
   <li>created_at: {{entity.agent_id}}</li>
   <li>updated_at: {{entity.agent_id}}</li>
 </ul>
+<hr>
+<h3>Host Info</h3>
+<p ng-if="hostInfoLoading">loading...</p>
+<p ng-if="!entity.hostInfo && !hostInfoLoading">Agent Not Installed</p>
+<div ng-if="entity.hostInfo">
+  <p>Todo:</p>
+  <ul>
+    <li>use $interval poll for changes</li>
+    <li>graph the stuffs</li>
+  </ul>
+  <p>Raw Host Info:</p>
+  <pre><code>{{entity.hostInfo | json }}</code></pre>
+</div>
