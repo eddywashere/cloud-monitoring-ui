@@ -32,13 +32,8 @@ angular.module('dashboardApp')
       return serviceDefaults[name] || '';
     };
 
-    Servers.get({region: 'ORD'}, function(data){
-      $scope.servers = $scope.servers.concat(data.servers);
-    });
-    Servers.get({region: 'DFW'}, function(data) {
-      $scope.servers = $scope.servers.concat(data.servers);
-    });
-    Servers.get({region: 'IAD'}, function(data) {
-      $scope.servers = $scope.servers.concat(data.servers);
+    Servers.get().$promise.then(function (data) {
+      console.log(data);
+      $scope.servers = data.values;
     });
   });

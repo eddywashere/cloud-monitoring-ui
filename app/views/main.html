@@ -6,17 +6,20 @@
     <thead>
       <tr>
         <th></th>
-        <th>Entity Name</th>
+        <th>Label</th>
+        <th>ID</th>
         <th>IPv4</th>
-        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="server in servers">
         <td><input type="checkbox"></td>
-        <td><a href="/proxy/cloudServersOpenStack,ORD/servers/{{server.id}}" title="{{server.status}}">{{server.name}}</a></td>
-        <td>{{server.accessIPv4}}</td>
-        <td>{{server.status}}</td>
+        <td>
+          <a href="/proxy/cloudMonitoring/entities/{{server.id}}" title="{{server.id}}">{{server.label}}</a>
+          <span ng-if="server.uri" class="iconic iconic-cloud" title="Rackspace Cloud Product" aria-hidden="true" style="padding-left:5px; color: #666;"></span>
+        </td>
+        <td>{{server.id}}</td>
+        <td>{{server.ip_addresses.access_ip1_v4}}</td>
       </tr>
     </tbody>
   </table>

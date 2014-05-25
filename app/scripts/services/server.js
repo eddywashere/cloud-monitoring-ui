@@ -3,17 +3,15 @@
 angular.module('dashboardApp')
   .factory('Servers', function ($resource) {
 
-    var Servers = $resource('/proxy/cloudServersOpenStack,:region/servers/detail',
-      {
-        region: '@region'
-      },
+    var Servers = $resource('/proxy/cloudMonitoring/entities',
+      {},
       {
         'query': {
           method: 'GET',
           isArray: true,
           transformResponse: function (data){
-            var servers = data.servers;
-            return servers;
+            var entities = data.values;
+            return entities;
           }
         }
       });
