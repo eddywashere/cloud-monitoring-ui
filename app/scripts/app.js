@@ -24,4 +24,13 @@ angular
       .otherwise({
         redirectTo: '/entities'
       });
+  })
+  .run(function($rootScope) {
+    $rootScope.$on('$routeChangeStart', function(){
+      $rootScope.sidebar = '';
+    });
+    $rootScope.$on('$routeChangeSuccess', function(){
+      window.scrollTo(0,0);
+    });
+
   });

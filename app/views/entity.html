@@ -1,26 +1,28 @@
-<h2 class="page-title">Entities</h2>
-<button type="button" class="btn btn-primary">Add Entity</button>
-<button type="button" class="btn btn-default">Remove</button>
-<div class="table-responsive">
-  <table class="table" style="margin-top:10px;" ng-show="entities.length > 0">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Label</th>
-        <th>ID</th>
-        <th>IPv4</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="entity in entities">
-        <td><input type="checkbox"></td>
-        <td>
-          <a ng-href="#/entities/{{entity.id}}" ng-click="setEntity(entity)" title="{{entity.id}}">{{entity.label}}</a>
-          <span ng-if="entity.uri" class="iconic iconic-cloud" title="Rackspace Cloud Product" aria-hidden="true" style="padding-left:5px; color: #666;"></span>
-        </td>
-        <td>{{entity.id}}</td>
-        <td>{{entity.ip_addresses.access_ip1_v4}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="l-content-sm">
+  <h2 class="page-title">Entities</h2>
+  <button type="button" class="btn btn-primary">Add Entity</button>
+  <button type="button" class="btn btn-default">Remove</button>
+  <div class="table-responsive" style="max-height: 100%; min-height: 100%;">
+    <table class="table" style="margin-top:10px;" ng-show="entities.length > 0">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Label</th>
+          <th>ID</th>
+          <th>IPv4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="entity in entities">
+          <td><input type="checkbox"></td>
+          <td>
+            <a ng-href="#/entities/{{entity.id}}" ng-click="setEntity(entity)" title="{{entity.id}}">{{entity.label}}</a>
+            <span ng-if="entity.uri" class="iconic iconic-cloud" title="Rackspace Cloud Product" aria-hidden="true" style="padding-left:5px; color: #666;"></span>
+          </td>
+          <td>{{entity.id}}</td>
+          <td>{{entity.ip_addresses.access_ip1_v4}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

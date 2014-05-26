@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboardApp')
-  .controller('EntityDetailCtrl', function ($scope, $routeParams, Entities) {
+  .controller('EntityDetailCtrl', function ($scope, $routeParams, Entities, $interval) {
 
     var getHostInfo = function(){
       Entities.getAgentHostInfo($scope.entity.id).then(function(data){
@@ -10,7 +10,8 @@ angular.module('dashboardApp')
       }).catch(function(){
         $scope.hostInfoLoading = false;
       });
-    };
+    },
+    polling;
 
     $scope.hostInfoLoading = true;
 
@@ -25,4 +26,6 @@ angular.module('dashboardApp')
         getHostInfo();
       });
     }
+
+    // polling = $interval(getHostInfo, 1000);
   });

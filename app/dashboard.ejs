@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= title %></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
     <!-- build:css styles/vendor.css -->
@@ -28,7 +29,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="button" class="navbar-toggle" ng-click="toggleSidebar()">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -48,26 +49,38 @@
     </div>
 
     <!-- Add your site or application content here -->
-    <div class="l-main">
+    <div class="l-main {{sidebar}}">
       <div class="l-sidebar">
         <div style="color:white;" class="l-inner">
           <ul class="sidebar-nav">
             <li class="header">
-              <span class="iconic iconic-pulse" title="pulse" aria-hidden="true"></span>Monitoring
+              <span class="iconic iconic-menu iconic-sm" title="pulse" aria-hidden="true"></span>Monitoring
             </li>
             <li>
-              <a href="#/entities" class="selected">Entities</a>
+              <a href="#/entities" class="selected">Overview</a>
             </li>
             <li>
-              <a href="">Alarms</a>
+              <a href="styleguide">Alarms</a>
             </li>
             <li>
               <a href="">Notification</a>
             </li>
           </ul>
+          <ul class="visible-xs sidebar-nav">
+            <li class="header">
+              <span class="iconic iconic-person-genderless iconic-sm" title="pulse" aria-hidden="true"></span>Account
+            </li>
+            <li>
+              <a class="selected"><%= user.username %> (#<%= user.tenant %>)</a>
+            </li>
+            <li>
+              <a href="logout">Log Out</a>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="l-content">
+        <div class="l-sidebar-backdrop" ng-click="toggleSidebar()"></div>
         <div class="container-fluid" ng-view=""></div>
       </div>
     </div>

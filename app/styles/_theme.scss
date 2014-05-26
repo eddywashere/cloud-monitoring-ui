@@ -1,10 +1,10 @@
 html {
   height: 100%;
-  overflow: auto;
+  // overflow: auto;
 }
 body.dashboard {
   height: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 body {
@@ -96,23 +96,60 @@ hr.seam {
   width: $sidebar-width;
   margin-left: -($sidebar-width);
   z-index: 1000;
-  background-color: #333;
+  background-color: #f1f1f1;
   // border-top: 2px solid #494949;
   .l-inner {
     position: fixed;
     width: $sidebar-width;
-    background-color: #2a2a2a;
+    // background-color: #2a2a2a;
   }
+}
+
+.l-sidebar-backdrop {
+  display: none;
+  min-height: 100%;
+  position: fixed;
+  width: 100%;
 }
 
 .l-content {
   padding: 0 10px;
 }
 
+[class^="l-content-"] {
+  margin: 0 auto;
+}
+
+.l-content-xs {
+  max-width: 700px;
+}
+
+.l-content-sm {
+  max-width: 900px;
+}
+
+.l-content-md {
+  max-width: 1200;
+}
+
+.l-content-lg {
+  max-width: 1500;
+}
+
 @media screen and (max-width: 767px) {
   .l-main {
-    left: 0;
     padding-left: 0;
+    &.open .l-sidebar {
+      left:  $sidebar-width;
+    }
+    &.open .l-content {
+      position: relative;
+      left:  $sidebar-width;
+    }
+
+    &.open .l-sidebar-backdrop {
+      display: block;
+    }
   }
   .l-content {
     padding: 0;
@@ -132,29 +169,34 @@ hr.seam {
 .sidebar-nav {
   padding-left: 0;
   list-style: none;
-  margin: 0;
-  border-bottom: 1px solid #494949;
+  margin: 10px 0 0 0;
+
+  & + .sidebar-nav .header {
+    border-top: 1px solid #e3e3e3;
+  }
+
   a {
     display: block;
-    padding: 10px 15px 10px 45px;
-    color: #ddd;
+    padding: 6px 15px 6px 45px;
+    color: #666;
     &:hover, &.selected {
       text-decoration: none;
-      background-color: #222;
-      color: #fff;
+      // background-color: #222;
+      color: #333;
     }
   }
   .header a, .header {
-    color: #aaa;
+    color: #666;
     text-transform: uppercase;
-    background-color: #333;
+    // background-color: #333;
     display: block;
-    padding: 10px 15px 10px 20px;
-    border-top: 1px solid #494949;
-    border-bottom: 1px solid #212121;
-    &:hover {
-      color: #aaa;
-    }
+    padding: 6px 15px 6px 20px;
+    // border-top: 1px solid #fff;
+    // border-bottom: 1px solid #e3e3e3;
+  }
+
+  .header a:hover {
+    color: #333;
   }
 
   .iconic {

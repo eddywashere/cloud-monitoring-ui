@@ -1,39 +1,74 @@
-<h2>{{entity.label}}</h2>
-<hr>
-<h3>Details</h3>
-<ul>
-  <li>id: {{entity.id}}</li>
-  <li>label: {{entity.label}}</li>
-  <li>ip_addresses:
-    <ul>
-      <li ng-repeat="(address, ip) in entity.ip_addresses">
-        {{address}} - {{ip}}
-      </li>
-    </ul>
-  </li>
-  <li>metadata: <span ng-if="!entity.metadata">null</span>
-    <ul ng-if="entity.metadata">
-      <li ng-repeat="(key, value) in entity.metadata">
-        {{key}} - {{value}}
-      </li>
-    </ul>
-  </li>
-  <li>managed: {{entity.managed}}</li>
-  <li>uri: {{entity.uri}}</li>
-  <li>agent_id: {{entity.agent_id}}</li>
-  <li>created_at: {{entity.agent_id}}</li>
-  <li>updated_at: {{entity.agent_id}}</li>
-</ul>
-<hr>
-<h3>Host Info</h3>
-<p ng-if="hostInfoLoading">loading...</p>
-<p ng-if="!entity.hostInfo && !hostInfoLoading">Agent Not Installed</p>
-<div ng-if="entity.hostInfo">
-  <p>Todo:</p>
+<div class="l-content-sm">
+  <h2>{{entity.label}}</h2>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">.col-md-6</div>
+    <div class="col-xs-12 col-sm-6">.col-md-6</div>
+  </div>
+  <hr>
+  <h3>Details</h3>
   <ul>
-    <li>use $interval poll for changes</li>
-    <li>graph the stuffs</li>
+    <li>id: {{entity.id}}</li>
+    <li>label: {{entity.label}}</li>
+    <li>ip_addresses:
+      <ul>
+        <li ng-repeat="(address, ip) in entity.ip_addresses">
+          {{address}} - {{ip}}
+        </li>
+      </ul>
+    </li>
+    <li>metadata: <span ng-if="!entity.metadata">null</span>
+      <ul ng-if="entity.metadata">
+        <li ng-repeat="(key, value) in entity.metadata">
+          {{key}} - {{value}}
+        </li>
+      </ul>
+    </li>
+    <li>managed: {{entity.managed}}</li>
+    <li>uri: {{entity.uri}}</li>
+    <li>agent_id: {{entity.agent_id}}</li>
+    <li>created_at: {{entity.agent_id}}</li>
+    <li>updated_at: {{entity.agent_id}}</li>
   </ul>
-  <p>Raw Host Info:</p>
-  <pre><code>{{entity.hostInfo | json }}</code></pre>
+  <hr>
+  <h3>Host Info</h3>
+  <p ng-if="hostInfoLoading">loading...</p>
+  <p ng-if="!entity.hostInfo && !hostInfoLoading">Agent Not Installed</p>
+  <div ng-if="entity.hostInfo">
+    <p>Todo:</p>
+    <ul>
+      <li>use $interval poll for changes</li>
+      <li>graph the stuffs</li>
+    </ul>
+    <p>CPU</p>
+    <ul>
+      <li ng-repeat="cpu in entity.hostInfo.cpus.info">
+        {{cpu.name}}
+        <ul>
+          <li>vendor: {{cpu.vendor}}</li>
+          <li>model: {{cpu.model}}</li>
+          <li>mhz: {{cpu.mhz}}</li>
+          <li>idle: {{cpu.idle}}</li>
+          <li>stolen: {{cpu.stolen}}</li>
+          <li>sys: {{cpu.sys}}</li>
+          <li>user: {{cpu.user}}</li>
+          <li>wait: {{cpu.wait}}</li>
+          <li>total: {{cpu.total}}</li>
+          <li>total_cores: {{cpu.total_cores}}</li>
+          <li>total_sockets: {{cpu.total_sockets}}</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Memory</p>
+    <ul>
+      <li>actual_free: {{entity.hostInfo.memory.info.actual_free}}</li>
+      <li>actual_used: {{entity.hostInfo.memory.info.actual_used}}</li>
+      <li>free: {{entity.hostInfo.memory.info.free}}</li>
+      <li>used: {{entity.hostInfo.memory.info.used}}</li>
+      <li>total: {{entity.hostInfo.memory.info.total}}</li>
+      <li>ram: {{entity.hostInfo.memory.info.ram}}</li>
+    </ul>
+    <p>Raw Host Info:</p>
+    <pre><code>{{entity.hostInfo | json }}</code></pre>
+  </div>
 </div>
