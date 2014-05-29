@@ -242,3 +242,22 @@ svg {
 .axis path.domain {
   stroke: none;
 }
+
+.current-value {
+  fill: #cccccc;
+  font-size: 11px;
+}
+.rs-status-error {
+  fill: #c40022;
+}
+
+.iconic-rackspace {
+  padding-left: 5px;
+  color: transparent;
+  background: url('https://a16545fb495c8760fb33-4cec33efbe2744e99ba863e52edb2075.ssl.cf2.rackcdn.com/icon-rs.png');
+  background-size: 15px 15px;
+  /* display: block; */
+  width: 15px;
+  height: 15px;
+  margin-left: 2px;
+}

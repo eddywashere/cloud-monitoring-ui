@@ -1,4 +1,4 @@
-<div class="l-content-sm">
+<div class="l-content">
   <h2 class="page-title">Entities</h2>
   <button type="button" class="btn btn-primary">Add Entity</button>
   <button type="button" class="btn btn-default">Remove</button>
@@ -8,7 +8,7 @@
         <tr>
           <th></th>
           <th>Label</th>
-          <th>ID</th>
+          <th>Tags</th>
           <th>IPv4</th>
           <th>CPU</th>
           <th>Memory</th>
@@ -20,9 +20,15 @@
           <td><input type="checkbox"></td>
           <td>
             <a ng-href="#/entities/{{entity.id}}" ng-click="setEntity(entity)" title="{{entity.id}}">{{entity.label}}</a>
-            <span ng-if="entity.uri" class="iconic iconic-cloud" title="Rackspace Cloud Product" aria-hidden="true" style="padding-left:5px; color: #666;"></span>
+            <span ng-if="entity.uri" class="iconic iconic-rackspace" title="Rackspace Cloud Product" aria-hidden="true" style="padding-left:5px; color: #666;"></span>
           </td>
-          <td>{{entity.id}}</td>
+          <td><!-- {{entity.id}} -->
+            <span class="label label-default" ng-class="{hidden : $index%3==0}">web</span>
+            <span class="label label-default" ng-class="{hidden : $index%2==0}">prod</span>
+            <span class="label label-default" ng-class="{hidden : !$index%2==0}">staging</span>
+            <span class="label label-default" ng-class="{hidden : $index%4==0}">app</span>
+            <span class="label label-default" ng-class="{hidden : $index%5==0}">db</span>
+          </td>
           <td>{{entity.ip_addresses.access_ip1_v4}}</td>
           <td><div spark></div></td>
           <td><div spark></div></td>
