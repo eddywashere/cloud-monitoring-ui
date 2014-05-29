@@ -238,3 +238,7 @@ svg {
   stroke: #ccc;
   shape-rendering: crispEdges;
 }
+
+.axis path.domain {
+  stroke: none;
+}
