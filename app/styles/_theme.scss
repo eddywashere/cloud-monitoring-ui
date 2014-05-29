@@ -212,3 +212,29 @@ hr.seam {
 .table-responsive {
   border: none;
 }
+
+// graphs
+svg {
+  font: 10px sans-serif;
+}
+
+.axis text {
+  fill: #777;
+}
+
+.axis .tick line {
+  stroke: #d8d8d8;
+}
+
+.line {
+  fill: none;
+  stroke: #9966ee;
+  stroke-width: 1.5px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ccc;
+  shape-rendering: crispEdges;
+}

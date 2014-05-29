@@ -1,40 +1,77 @@
 <div class="l-content-sm">
-  <h2>{{entity.label}}</h2>
+  <h1>{{entity.label}}</h1>
   <hr>
   <div class="row">
-    <div class="col-xs-12 col-sm-6">.col-md-6</div>
-    <div class="col-xs-12 col-sm-6">.col-md-6</div>
+    <div class="col-xs-12 col-sm-6">
+      <p style="margin:0;">CPU Usage</p>
+      <div class="graph1"></div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <p style="margin:0;">Memory Usage</p>
+      <div class="graph2"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <p style="margin:0;">Disk Usage</p>
+      <div class="graph3"></div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <p style="margin:0;">Network Traffic</p>
+      <div class="graph4"></div>
+    </div>
   </div>
   <hr>
-  <h3>Details</h3>
-  <ul>
-    <li>id: {{entity.id}}</li>
-    <li>label: {{entity.label}}</li>
-    <li>ip_addresses:
-      <ul>
-        <li ng-repeat="(address, ip) in entity.ip_addresses">
-          {{address}} - {{ip}}
-        </li>
-      </ul>
-    </li>
-    <li>metadata: <span ng-if="!entity.metadata">null</span>
-      <ul ng-if="entity.metadata">
-        <li ng-repeat="(key, value) in entity.metadata">
-          {{key}} - {{value}}
-        </li>
-      </ul>
-    </li>
-    <li>managed: {{entity.managed}}</li>
-    <li>uri: {{entity.uri}}</li>
-    <li>agent_id: {{entity.agent_id}}</li>
-    <li>created_at: {{entity.agent_id}}</li>
-    <li>updated_at: {{entity.agent_id}}</li>
-  </ul>
-  <hr>
-  <h3>Host Info</h3>
-  <p ng-if="hostInfoLoading">loading...</p>
+<!--   <h2>Host Info</h2>
+ -->  <p ng-if="hostInfoLoading">loading...</p>
   <p ng-if="!entity.hostInfo && !hostInfoLoading">Agent Not Installed</p>
   <div ng-if="entity.hostInfo">
+    <h3>Processes</h3>
+    <div class="table-responsive">
+      <table class="table" style="margin-top:10px;" ng-if="entity.hostInfo">
+        <thead>
+          <tr>
+            <th>PID</th>
+            <th>Process Name</th>
+            <th>Memory</th>
+            <th>Group/User</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="p in entity.hostInfo.processes.info">
+            <td>{{p.state_ppid}}</td>
+            <td>{{p.state_name}}</td>
+            <td>{{p.memory_size}}</td>
+            <td>{{p.cred_user}}/{{p.cred_group}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <ul>
+      <li>id: {{entity.id}}</li>
+      <li>label: {{entity.label}}</li>
+      <li>ip_addresses:
+        <ul>
+          <li ng-repeat="(address, ip) in entity.ip_addresses">
+            {{address}} - {{ip}}
+          </li>
+        </ul>
+      </li>
+      <li>metadata: <span ng-if="!entity.metadata">null</span>
+        <ul ng-if="entity.metadata">
+          <li ng-repeat="(key, value) in entity.metadata">
+            {{key}} - {{value}}
+          </li>
+        </ul>
+      </li>
+      <li>managed: {{entity.managed}}</li>
+      <li>uri: {{entity.uri}}</li>
+      <li>agent_id: {{entity.agent_id}}</li>
+      <li>created_at: {{entity.agent_id}}</li>
+      <li>updated_at: {{entity.agent_id}}</li>
+    </ul>
+    <hr>
     <p>Todo:</p>
     <ul>
       <li>use $interval poll for changes</li>
