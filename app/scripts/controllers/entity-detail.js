@@ -27,6 +27,39 @@ angular.module('dashboardApp')
       });
     }
 
+    Entities.getChecks($routeParams.entityid).then(function(data){
+      $scope.checks = data.values;
+    });
+
+    Entities.getAlarms($routeParams.entityid).then(function(data){
+      $scope.alarms = data.values;
+    });
+
+    $scope.delete = function(checkId){
+      Entities.deleteCheck($routeParams.entityid, checkId).then(function(data){
+        console.log('boom deleted');
+        $scope.checks.splice(_.indexOf($scope.checks, _.findWhere($scope.checks, { id : checkId})), 1);
+      });
+    };
+
+    $scope.deleteAllChecks = function(){
+      angular.forEach($scope.checks, function(check, i){
+        Entities.deleteCheck($routeParams.entityid, check.id).then(function(data){
+          console.log('boom deleted');
+          $scope.checks.splice(_.indexOf($scope.checks, _.findWhere($scope.checks, { id : check.id})), 1);
+        });
+      });
+    };
+
+    $scope.deleteAllAlarms = function(){
+      angular.forEach($scope.alarms, function(alarm, i){
+        Entities.deleteAlarm($routeParams.entityid, alarm.id).then(function(data){
+          console.log('boom deleted');
+          $scope.alarms.splice(_.indexOf($scope.alarms, _.findWhere($scope.alarms, { id : alarm.id})), 1);
+        });
+      });
+    };
+
     var graph = function(name, change){
       var n = 40,
       change = change || .2,

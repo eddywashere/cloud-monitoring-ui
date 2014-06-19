@@ -18,7 +18,7 @@
     "morgan": "*",
     "passport": "*",
     "passport-keystone": "*",
-    "proxy-keystone": "*",
+    "proxy-keystone": ">=1.0.0",
     "static-favicon": "*"
   },
   "devDependencies": {

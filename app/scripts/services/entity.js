@@ -15,6 +15,28 @@ angular.module('dashboardApp')
           isArray: false
         }
       }),
+    Checks = $resource('/proxy/cloudMonitoring/entities/:entityId/checks/:checkId',
+      {
+        entityId: '@entityId',
+        checkId: '@checkId'
+      },
+      {
+        'query': {
+          method: 'GET',
+          isArray: false
+        }
+      }),
+    Alarms = $resource('/proxy/cloudMonitoring/entities/:entityId/alarms/:alarmId',
+      {
+        entityId: '@entityId',
+        checkId: '@alarmId'
+      },
+      {
+        'query': {
+          method: 'GET',
+          isArray: false
+        }
+      }),
     AgentHostInfo = $resource('/proxy/cloudMonitoring/views/agent_host_info?entityId=:entityId&include=memory&include=cpus&include=disks&include=processes&include=network_interfaces',
       {
         entityId: '@entityId'
@@ -48,6 +70,32 @@ angular.module('dashboardApp')
     entities.getDetail = function(entityId){
       return Entities.get({
         entityId: entityId
+      }).$promise;
+    };
+
+    entities.getChecks = function(entityId){
+      return Checks.get({
+        entityId: entityId
+      }).$promise;
+    };
+
+    entities.getAlarms = function(entityId){
+      return Alarms.get({
+        entityId: entityId
+      }).$promise;
+    };
+
+    entities.deleteCheck = function(entityId, checkId){
+      return Checks.delete({
+        entityId: entityId,
+        checkId: checkId
+      }).$promise;
+    };
+
+    entities.deleteAlarm = function(entityId, alarmId){
+      return Alarms.delete({
+        entityId: entityId,
+        alarmId: alarmId
       }).$promise;
     };
 

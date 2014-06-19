@@ -19,7 +19,11 @@ var corsOptions = {
 };
 var staticDir;
 // A proxy for Keystone Service Catalog Endpoints
-var proxyKeystone = require('proxy-keystone');
+var ProxyKeystone = require('proxy-keystone');
+
+var proxyKeystone = new ProxyKeystone({
+  userAgent: 'Rackspace Custom Dashboard'
+});
 // routes
 var routes = require('./routes/index');
 var styleguide = require('./routes/styleguide');
@@ -73,11 +77,15 @@ if (app.get('env') === 'development'){
   app.use('/', styleguide);
 }
 
+console.log('ello');
 app.all('/proxy/*',
-  proxyKeystone({
-    userAgent: 'Rackspace Custom Dashboard'
-  })
+  proxyKeystone.middleware
 );
+
+proxyKeystone.on('proxyError',function(err){
+  console.log('proxy error data:');
+  console.log(err.message);
+});
 
 // app.use('/users', users);
 
